@@ -1051,11 +1051,7 @@ static ssize_t data_role_show(struct device *dev,
 
 	if (port->cap->data == TYPEC_PORT_DRD)
 		return sprintf(buf, "%s\n", port->data_role == TYPEC_HOST ?
-#if defined(CONFIG_MACH_XIAOMI_SM8150)
-			       "host" : "device");
-#else
-			       "[host] device" : "host [device]");
-#endif
+			       "host [host]" : "device [device]");
 
 	return sprintf(buf, "[%s]\n", typec_data_roles[port->data_role]);
 }
